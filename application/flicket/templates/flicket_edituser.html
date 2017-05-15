@@ -2,7 +2,16 @@
 {% extends "flicket_base.html" %}
 {% block content %}
 <div class="container">
+
     <h1 class="text-center">{{ title }}</h1>
+
+    <div class="row">{% if g.user.avatar %}
+        <img class="center-block"
+             src="{{ url_for('flicket_bp.static', filename='flicket_avatars/') }}{{ g.user.avatar }}"
+             style="max-width: 200px; padding: 12px 0;">
+        {% endif %}
+    </div>
+
 
     <form class="form-horizontal" enctype="multipart/form-data" action="" method="post" name="user_edit">
         {{ form.hidden_tag() }}
@@ -12,10 +21,6 @@
 
 
         <div class="col-sm-6 text-center">
-
-            <p>
-                You can't edit your user name / login id: <span class="amber_span">{{ g.user.username }}</span>.
-            </p>
 
             <div class="form-group form-group-sm">
                 <label class="col-sm-3 control-label">{{ form.username.label }}</label>
@@ -74,8 +79,11 @@
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{ form.avatar.label }}</label>
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     {{ form.avatar }}
+                </div>
+                <div class="col-sm-2">
+
                 </div>
             </div>
 
