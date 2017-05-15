@@ -26,7 +26,6 @@ def ticket_view(ticket_id, page=1):
 
     # is ticket number legitimate
     ticket = FlicketTicket.query.filter_by(id=ticket_id).first()
-
     if not ticket:
         flash('Cannot find ticket: "{}"'.format(ticket_id), category='warning')
         return redirect(url_for('flicket_bp.tickets'))
