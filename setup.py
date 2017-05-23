@@ -42,7 +42,6 @@ class RunSetUP(Command):
         self.set_db_config_defaults()
         self.set_email_config()
         self.create_admin(username=username, password=password, email=email, job_title='admin')
-        self.create_notifier()
         self.create_admin_group()
         self.create_default_ticket_status()
         self.create_default_priority_levels()
@@ -113,22 +112,6 @@ class RunSetUP(Command):
                 print('Admin user added.')
         else:
             print('Admin user is already added.')
-
-    @staticmethod
-    def create_notifier():
-        """ creates user for notifications """
-
-        query = FlicketUser.query.filter_by(username=app.config['NOTIFICATION']['username'])
-        if query.count() == 0:
-            add_user = FlicketUser(username=app.config['NOTIFICATION']['username'],
-                                   name=app.config['NOTIFICATION']['name'],
-                                   password=hash_password(app.config['NOTIFICATION']['password']),
-                                   email=app.config['NOTIFICATION']['email'],
-                                   date_added=datetime.datetime.now())
-            db.session.add(add_user)
-            print("Notification user added.")
-        else:
-            print('Notification user already added.')
 
     @staticmethod
     def create_admin_group(silent=False):

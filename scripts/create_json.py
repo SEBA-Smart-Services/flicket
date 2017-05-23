@@ -70,7 +70,6 @@ class WriteConfigJson(object):
         db_name = input('Enter database name: ')
 
         secret_key = random_string()
-        notification_user_password = random_string()
 
         config_values = {
             'db_username': db_username,
@@ -79,14 +78,12 @@ class WriteConfigJson(object):
             'db_port': db_port,
             'db_name': db_name,
             'SECRET_KEY': secret_key,
-            'NOTIFICATION_USER_PASSWORD': notification_user_password
-
         }
 
         # write json file
         with open(config_file, 'w') as f:
             print('Writing config file to {}'.format(config_file))
-            json.dump(config_values, f)
+            json.dump(config_values, f, indent=4)
 
 if __name__ == '__main__':
 

@@ -52,12 +52,6 @@ class BaseConfiguration(object):
     FLICKET_REST_API = WEBHOME + 'flicket-rest-api'
     ADMINHOME = '/flicket_admin/'
 
-    # flicket user used to post replies to tickets for status changes.
-    NOTIFICATION = {'name': 'notification',
-                 'username': 'notification',
-                 'password': config_data['NOTIFICATION_USER_PASSWORD'],
-                 'email': 'admin@localhost'}
-
 
 class TestConfiguration(BaseConfiguration):
     DEBUG = False
