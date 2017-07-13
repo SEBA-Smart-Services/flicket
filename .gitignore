@@ -21,3 +21,4 @@ env*/
 *.pyc
 env/
 env2/
+config.json
