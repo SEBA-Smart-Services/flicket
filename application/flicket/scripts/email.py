@@ -48,6 +48,7 @@ class FlicketMail:
     def create_ticket(self, ticket):
         """"""
         # todo: send email to department heads
+        print("DEBUG: create_ticket email")
         pass
 
     def reply_ticket(self, ticket=None, reply=None):
